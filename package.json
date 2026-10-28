@@ -1,0 +1,16 @@
+{
+  "name": "ruta-itiid-pwa",
+  "version": "1.0.0",
+  "description": "PWA para nuevos estudiantes de Ingeniería en Tecnologías de la Información e Innovación Digital",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "pwa",
+    "itiid",
+    "utom"
+  ],
+  "author": "",
+  "license": "ISC"
+}

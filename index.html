@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#00786c">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<style>html,body{margin:0;height:100%}:root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Ruta ITIID UTOM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Conoce la Ingeniería en Tecnologías de la Información e Innovación Digital de la UTOM: mapa curricular, lo que aprenderás y cómo prepararte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: app de una columna con barra inferior (móvil) / lateral (escritorio); el mapa curricular es una banda horizontal de 10 cuatrimestres */
+:root{
+  --bg:#eef3f2; --surface:#ffffff; --surface-2:#f6f9f8; --ink:#11201d; --muted:#566966; --line:#d3dfdc;
+  --teal:#00786c; --teal-ink:#ffffff; --teal-soft:#d6eeea; --wine:#8b1d41; --wine-soft:#f6e2e9;
+  --c1:#f0d78a; --c2:#eeb48a; --c3:#e8902e;
+  --a-ing:#3b5bcc; --a-hum:#a3366b; --a-mat:#8a5a00; --a-sw:#00786c; --a-inf:#5b45b0; --a-dat:#b44a12; --a-ges:#4d6b12; --a-opt:#6b6b6b; --a-est:#8b1d41;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
+  --r:14px; --nav-h:64px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c1514; --surface:#13201e; --surface-2:#182826; --ink:#e4eeec; --muted:#92a7a3; --line:#253735;
+  --teal:#3cc6b4; --teal-ink:#06201c; --teal-soft:#123430; --wine:#ec84a6; --wine-soft:#3a1925;
+  --c1:#9c8640; --c2:#a26a44; --c3:#b8701f;
+  --a-ing:#8ea6ff; --a-hum:#f08cbb; --a-mat:#e3b65c; --a-sw:#3cc6b4; --a-inf:#b4a2ff; --a-dat:#ff9b66; --a-ges:#a8cf62; --a-opt:#b0b0b0; --a-est:#ec84a6;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1514; --surface:#13201e; --surface-2:#182826; --ink:#e4eeec; --muted:#92a7a3; --line:#253735;
+  --teal:#3cc6b4; --teal-ink:#06201c; --teal-soft:#123430; --wine:#ec84a6; --wine-soft:#3a1925;
+  --c1:#9c8640; --c2:#a26a44; --c3:#b8701f;
+  --a-ing:#8ea6ff; --a-hum:#f08cbb; --a-mat:#e3b65c; --a-sw:#3cc6b4; --a-inf:#b4a2ff; --a-dat:#ff9b66; --a-ges:#a8cf62; --a-opt:#b0b0b0; --a-est:#ec84a6;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,3.4rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:700;letter-spacing:-.01em}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+a{color:var(--teal)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:6px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font:700 .74rem/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--wine)}
+.muted{color:var(--muted)}
+
+/* Shell */
+.app{display:flex;min-height:100%}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:space-around;
+  background:var(--surface);border-top:1px solid var(--line);
+  padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+.nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:none;padding:6px 2px;border-radius:10px;cursor:pointer;color:var(--muted);font-size:.72rem;font-weight:700}
+.nav button svg{width:22px;height:22px}
+.nav button[aria-current="page"]{color:var(--teal);background:var(--teal-soft)}
+.brand-side{display:none}
+main{flex:1;min-width:0;padding-bottom:calc(var(--nav-h) + 24px + env(safe-area-inset-bottom,0px))}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:12px;padding-block:10px}
+.logo{display:flex;align-items:center;gap:10px;font:800 1rem/1 var(--f-display)}
+.logo i{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--teal);color:var(--teal-ink);font:800 .8rem/1 var(--f-mono);font-style:normal}
+.logo small{display:block;font:500 .72rem/1.2 var(--f-body);color:var(--muted)}
+.spacer{flex:1}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:.82rem;font-weight:700;cursor:pointer}
+.pill.primary{background:var(--teal);color:var(--teal-ink);border-color:var(--teal)}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--teal)}
+.offline .status-dot{background:var(--wine)}
+@media (min-width:900px){
+  .nav{position:sticky;top:0;bottom:auto;right:auto;height:100vh;width:110px;flex-direction:column;justify-content:flex-start;gap:6px;border-top:0;border-right:1px solid var(--line);padding:16px 10px}
+  .nav button{flex:0;padding:12px 4px;font-size:.78rem}
+  main{padding-bottom:48px}
+}
+.view{display:none}
+.view.active{display:block;animation:rise .35s ease both}
+@keyframes rise{from{transform:translateY(8px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.view.active{animation:none}}
+section{padding-block:28px}
+.stack{display:flex;flex-direction:column;gap:14px}
+
+/* Hero */
+.hero{padding-block:36px 20px;display:grid;gap:22px}
+.hero p.lead{font-size:1.12rem;max-width:58ch;color:var(--muted)}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.route{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;overflow-x:auto}
+.route-track{display:grid;grid-template-columns:repeat(10,minmax(52px,1fr));gap:4px;min-width:560px}
+.seg{height:44px;border-radius:8px;display:grid;place-items:center;font:700 .85rem/1 var(--f-mono);color:var(--ink);position:relative;border:0;cursor:pointer}
+.seg.k1{background:var(--c1)}.seg.k2{background:var(--c2)}.seg.k3{background:var(--c3)}
+.seg.est{background:repeating-linear-gradient(135deg,var(--wine) 0 6px,color-mix(in srgb,var(--wine) 70%,var(--surface)) 6px 12px);color:#fff}
+.route-labels{display:grid;grid-template-columns:repeat(10,minmax(52px,1fr));gap:4px;min-width:560px;margin-top:8px;font-size:.72rem;color:var(--muted)}
+.route-labels span{grid-column:span 3}
+.route-labels .ms{grid-column:span 1;color:var(--wine);font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.stat b{display:block;font:800 1.7rem/1 var(--f-display);color:var(--teal);font-variant-numeric:tabular-nums}
+.stat span{font-size:.85rem;color:var(--muted)}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:12px 18px;font-weight:700;border:1px solid var(--line);background:var(--surface);cursor:pointer;text-decoration:none;color:var(--ink)}
+.btn.primary{background:var(--teal);border-color:var(--teal);color:var(--teal-ink)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card .tag{align-self:flex-start}
+.tag{display:inline-block;font:700 .7rem/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:6px;background:var(--teal-soft);color:var(--teal)}
+.tag.wine{background:var(--wine-soft);color:var(--wine)}
+
+/* Mapa */
+.map-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.search{flex:1 1 220px;min-width:0;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:11px 14px;font:inherit;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{--c:var(--teal);border:1px solid color-mix(in srgb,var(--c) 40%,var(--line));background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 11px;font-size:.8rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed="true"]{background:color-mix(in srgb,var(--c) 18%,var(--surface));border-color:var(--c)}
+.cycles{display:flex;gap:8px;flex-wrap:wrap}
+.cycle-key{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted)}
+.cycle-key i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.board{overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin-inline:-4px}
+.cols{display:grid;grid-template-columns:repeat(10,minmax(220px,1fr));gap:10px;padding:4px;min-width:max-content}
+.col{scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;width:220px}
+.col-head{border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:baseline;color:var(--ink)}
+.col-head b{font:800 1rem/1 var(--f-display)}
+.col-head span{font:700 .75rem/1 var(--f-mono)}
+.k1 .col-head{background:var(--c1)}.k2 .col-head{background:var(--c2)}.k3 .col-head{background:var(--c3)}
+.subj{--c:var(--teal);text-align:left;border:1px solid var(--line);border-left:4px solid var(--c);background:var(--surface);border-radius:10px;padding:10px 12px;cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:opacity .2s,transform .15s}
+.subj:hover{transform:translateY(-1px);border-color:var(--c)}
+.subj .n{font-weight:700;line-height:1.25;font-size:.92rem}
+.subj .meta{display:flex;justify-content:space-between;align-items:center;font:500 .72rem/1 var(--f-mono);color:var(--muted)}
+.subj.dim{opacity:.22}
+.subj.done{background:color-mix(in srgb,var(--c) 10%,var(--surface))}
+.subj.done .n::after{content:" ✓";color:var(--c)}
+.subj.est{flex:1;min-height:420px;justify-content:center;align-items:flex-start;background:repeating-linear-gradient(135deg,var(--wine-soft) 0 10px,var(--surface) 10px 20px);border-left-color:var(--wine)}
+.subj.est .n{font:800 1.2rem/1.2 var(--f-display);color:var(--wine)}
+.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:640px){.totals{grid-template-columns:1fr}}
+.total{border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:2px;color:var(--ink)}
+.total b{font:800 1.3rem/1.1 var(--f-display)}
+.total span{font:500 .8rem/1.3 var(--f-mono)}
+.progress{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:10px}
+.bar{height:12px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .4s}
+
+/* Sheet */
+dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0}
+dialog::backdrop{background:rgba(5,15,13,.55)}
+.sheet{position:absolute;left:0;right:0;bottom:0;margin:0 auto;max-width:620px;background:var(--surface);color:var(--ink);border-radius:20px 20px 0 0;
+  padding:22px max(20px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:14px;max-height:85%;overflow:auto}
+@media (min-width:700px){.sheet{top:50%;bottom:auto;transform:translateY(-50%);border-radius:20px}}
+.sheet .row{display:flex;flex-wrap:wrap;gap:8px}
+.kv{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kv div{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:10px}
+.kv b{display:block;font:800 1.15rem/1.1 var(--f-display);font-variant-numeric:tabular-nums}
+.kv span{font-size:.75rem;color:var(--muted)}
+.check{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--teal);margin-top:2px;flex:none}
+
+/* Roles */
+.role h3{display:flex;align-items:center;gap:8px}
+.role ul{margin:0;padding-left:18px;font-size:.88rem;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:6px}
+.links button{--c:var(--teal);border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:4px 8px;font-size:.78rem;cursor:pointer;color:var(--ink)}
+.links button:hover{border-color:var(--c)}
+.timeline{display:grid;gap:12px}
+.tl{display:grid;grid-template-columns:110px 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+@media (max-width:640px){.tl{grid-template-columns:1fr}}
+.tl .when{font:700 .8rem/1.3 var(--f-mono);color:var(--muted)}
+.tl .when b{display:block;font:800 1.3rem/1.1 var(--f-display);color:var(--ink)}
+.tl ul{margin:6px 0 0;padding-left:18px}
+.tools{display:flex;flex-wrap:wrap;gap:8px}
+.tools span{font:500 .82rem/1 var(--f-mono);border:1px dashed var(--line);background:var(--surface);border-radius:8px;padding:8px 10px}
+
+/* Quiz */
+.quiz{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:14px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface-2);border-radius:12px;padding:12px 14px;cursor:pointer}
+.opt:hover{border-color:var(--teal)}
+.qbar{display:flex;gap:4px}
+.qbar i{flex:1;height:5px;border-radius:3px;background:var(--line)}
+.qbar i.on{background:var(--teal)}
+.result-area{font:800 1.6rem/1.1 var(--f-display);color:var(--teal)}
+.contact{background:var(--teal);color:var(--teal-ink);border-radius:var(--r);padding:22px;display:grid;gap:14px;grid-template-columns:1fr auto;align-items:center}
+@media (max-width:640px){.contact{grid-template-columns:1fr}}
+.contact a{color:inherit}
+.contact .phone{font:800 1.6rem/1 var(--f-mono)}
+.contact .btn{background:var(--teal-ink);color:var(--teal);border-color:transparent}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + 20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:700;font-size:.88rem;z-index:50}
+footer{padding-block:24px;font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+  <nav class="nav" aria-label="Secciones">
+    <button data-go="inicio" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Inicio</button>
+    <button data-go="mapa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="16" rx="1"/><rect x="17" y="4" width="4" height="16" rx="1"/></svg>Mapa</button>
+    <button data-go="futuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6 4 4 7-7"/><path d="M15 8h6v6"/></svg>Tu futuro</button>
+    <button data-go="vive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14 20c0-2.5 1.5-4.5 3.5-4.5S21 17.5 21 20"/></svg>Participa</button>
+    <button data-go="preparate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg>Prepárate</button>
+  </nav>
+
+  <main>
+    <header class="topbar"><div class="wrap">
+      <div class="logo"><i>TI</i><div>Ruta ITIID<small>UTOM · Maravatío</small></div></div>
+      <div class="spacer"></div>
+      <span class="pill" id="net" title="Estado de conexión"><span class="status-dot"></span><span id="netTxt">En línea</span></span>
+      <button class="pill primary" id="installBtn" hidden>Instalar app</button>
+    </div></header>
+
+    <!-- INICIO -->
+    <div class="view active" id="v-inicio"><div class="wrap">
+      <div class="hero">
+        <span class="eyebrow">Ingeniería en Tecnologías de la Información e Innovación Digital</span>
+        <h1>Diez cuatrimestres para pasar de usar la tecnología a <em>crearla</em>.</h1>
+        <p class="lead">Esta app es tu guía de nuevo ingreso. Aquí ves cada materia que vas a cursar, lo que podrás construir al terminar cada etapa y cómo prepararte desde hoy. Funciona sin internet una vez instalada.</p>
+        <div class="route" aria-label="Ruta de la carrera">
+          <div class="route-track" id="routeTrack"></div>
+          <div class="route-labels"><span>Primer ciclo · bases</span><span style="grid-column:span 2">Segundo ciclo · software</span><span class="ms">TSU</span><span>Tercer ciclo · especialidad</span><span class="ms">Ing.</span></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><b class="mono" id="sHrs">5,400</b><span>horas de formación</span></div>
+          <div class="stat"><b class="mono">2</b><span>títulos: TSU e Ingeniería</span></div>
+          <div class="stat"><b class="mono">1,200</b><span>horas de estadía en empresa</span></div>
+          <div class="stat"><b class="mono">8</b><span>niveles de inglés</span></div>
+        </div>
+        <div class="cta-row">
+          <button class="btn primary" data-go="mapa">Explorar el mapa curricular</button>
+          <button class="btn" data-go="preparate">Descubre qué área va contigo</button>
+        </div>
+      </div>
+
+      <section class="stack">
+        <span class="eyebrow">Cómo funciona el modelo</span>
+        <h2>Estudias, practicas en empresa y titulas dos veces</h2>
+        <div class="cards">
+          <div class="card"><span class="tag">Cuatrimestres 1–3</span><h3>Primer ciclo: las bases</h3><p class="muted">Matemáticas, física, redes, programación, bases de datos y sistemas operativos. Aquí aprendes cómo piensa una computadora.</p></div>
+          <div class="card"><span class="tag">Cuatrimestres 4–6</span><h3>Segundo ciclo: Técnico Superior Universitario</h3><p class="muted">Desarrollas aplicaciones web y móviles, diseñas software con estándares y cierras con 600 horas de estadía como TSU en Desarrollo de Software Multiplataforma.</p></div>
+          <div class="card"><span class="tag">Cuatrimestres 7–10</span><h3>Tercer ciclo: Ingeniería</h3><p class="muted">Inteligencia artificial, ciencia de datos, seguridad informática, IoT y gestión de proyectos. Terminas con otra estadía de 600 horas y el título de ingeniería.</p></div>
+        </div>
+      </section>
+
+      <section class="stack">
+        <span class="eyebrow">Lo que hace distinta a la carrera</span>
+        <div class="cards" id="pillars"></div>
+      </section>
+
+      <section>
+        <div class="contact">
+          <div class="stack" style="gap:6px">
+            <span class="eyebrow" style="color:inherit;opacity:.8">Informes e inscripciones</span>
+            <h2>Universidad Tecnológica del Oriente de Michoacán</h2>
+            <p>Universidad pública en Maravatío, Michoacán · <a href="https://www.utom.edu.mx" target="_blank" rel="noopener">www.utom.edu.mx</a></p>
+          </div>
+          <div class="stack" style="gap:8px">
+            <span class="phone" id="phone">447-150-8913</span>
+            <button class="btn" id="copyPhone">Copiar teléfono</button>
+          </div>
+        </div>
+      </section>
+    </div></div>
+
+    <!-- MAPA -->
+    <div class="view" id="v-mapa"><div class="wrap">
+      <section class="stack">
+        <span class="eyebrow">Mapa curricular · vigente desde septiembre 2024</span>
+        <h2>Las 56 materias y 2 estadías, cuatrimestre por cuatrimestre</h2>
+        <p class="muted">Toca cualquier materia para ver de qué trata y qué podrás hacer al terminarla. Filtra por área para ver cómo crece cada habilidad a lo largo de la carrera. Desliza a los lados para recorrer los 10 cuatrimestres.</p>
+        <div class="map-tools">
+          <input class="search" id="q" type="search" placeholder="Buscar materia: redes, datos, web…" aria-label="Buscar materia">
+        </div>
+        <div class="chips" id="areaChips" role="group" aria-label="Filtrar por área"></div>
+        <div class="cycles">
+          <span class="cycle-key"><i style="background:var(--c1)"></i>Primer ciclo</span>
+          <span class="cycle-key"><i style="background:var(--c2)"></i>Segundo ciclo</span>
+          <span class="cycle-key"><i style="background:var(--c3)"></i>Tercer ciclo</span>
+        </div>
+      </section>
+      <div class="board" id="board" tabindex="0" aria-label="Mapa curricular desplazable"><div class="cols" id="cols"></div></div>
+      <section class="stack">
+        <div class="totals" id="totals"></div>
+        <div class="progress">
+          <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><h3>Mi avance</h3><span class="mono muted" id="progTxt"></span></div>
+          <div class="bar"><i id="progBar"></i></div>
+          <p class="muted" style="font-size:.85rem">Cuando ya estés en la carrera, marca las materias que vayas aprobando. Tu avance se guarda solo en este dispositivo.</p>
+        </div>
+      </section>
+    </div></div>
+
+    <!-- FUTURO -->
+    <div class="view" id="v-futuro"><div class="wrap">
+      <section class="stack">
+        <span class="eyebrow">Lo que podrás hacer</span>
+        <h2>Qué sabrás hacer al cerrar cada ciclo</h2>
+        <div class="timeline" id="timeline"></div>
+      </section>
+      <section class="stack">
+        <span class="eyebrow">Campo laboral</span>
+        <h2>Puestos para los que te prepara la carrera</h2>
+        <p class="muted">Cada perfil indica las materias que lo construyen. Toca una para ver su detalle.</p>
+        <div class="cards" id="roles"></div>
+      </section>
+      <section class="stack">
+        <span class="eyebrow">Herramientas</span>
+        <h2>Tecnologías que es común usar en esta formación</h2>
+        <p class="muted">Ejemplos de herramientas de la industria relacionadas con las materias del plan. Cada docente define las que usa en clase.</p>
+        <div class="tools" id="tools"></div>
+      </section>
+    </div></div>
+
+    <!-- PARTICIPA -->
+    <div class="view" id="v-vive"><div class="wrap">
+      <section class="stack">
+        <span class="eyebrow">Experiencias dentro del plan</span>
+        <h2>Proyectos reales desde el tercer cuatrimestre</h2>
+        <div class="cards" id="experiences"></div>
+      </section>
+      <section class="stack">
+        <span class="eyebrow">Fuera del salón</span>
+        <h2>Dónde puedes participar</h2>
+        <p class="muted">Actividades en las que estudiantes de TI suelen involucrarse. Pregunta en tu universidad cuáles hay cada cuatrimestre.</p>
+        <div class="cards" id="activities"></div>
+      </section>
+    </div></div>
+
+    <!-- PREPÁRATE -->
+    <div class="view" id="v-preparate"><div class="wrap">
+      <section class="stack">
+        <span class="eyebrow">Test rápido · 6 preguntas</span>
+        <h2>¿Qué área de TI va más contigo?</h2>
+        <div class="quiz" id="quiz" aria-live="polite"></div>
+      </section>
+      <section class="stack">
+        <span class="eyebrow">Antes del primer día</span>
+        <h2>Tu lista de preparación</h2>
+        <p class="muted">Marca lo que ya tienes listo. Se guarda en este dispositivo.</p>
+        <div class="card" id="checklist"></div>
+      </section>
+      <section class="stack">
+        <span class="eyebrow">Consejos de supervivencia</span>
+        <div class="cards" id="tips"></div>
+      </section>
+      <footer>Contenido basado en el mapa curricular de la Licenciatura en Ingeniería en Tecnologías de la Información e Innovación Digital (DGUTyP, vigente a partir de septiembre de 2024). Confirma fechas, requisitos y actividades directamente con la UTOM.</footer>
+    </div></div>
+  </main>
+</div>
+
+<dialog id="sheet" aria-labelledby="dTitle">
+  <div class="sheet" id="sheetBody"></div>
+</dialog>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+'use strict';
+const AREAS = {
+  ing:{n:'Inglés',c:'--a-ing'},
+  sw:{n:'Software',c:'--a-sw'},
+  inf:{n:'Redes y seguridad',c:'--a-inf'},
+  dat:{n:'Datos e IA',c:'--a-dat'},
+  mat:{n:'Ciencias básicas',c:'--a-mat'},
+  ges:{n:'Proyectos y gestión',c:'--a-ges'},
+  hum:{n:'Habilidades humanas',c:'--a-hum'},
+  opt:{n:'Optativas',c:'--a-opt'},
+  est:{n:'Estadía',c:'--a-est'}
+};
+// [nombre, horas, área, descripción]
+const PLAN = [
+ {k:1,s:[
+  ['Inglés I',75,'ing','Comunicación básica en inglés: presentarte, describir tu entorno y entender instrucciones simples.'],
+  ['Desarrollo Humano y Valores',60,'hum','Autoconocimiento, valores y metas personales para empezar la carrera con un plan claro.'],
+  ['Fundamentos Matemáticos',105,'mat','Álgebra, funciones, lógica y conjuntos: el lenguaje con el que se describen los algoritmos.'],
+  ['Fundamentos de Redes',60,'inf','Cómo viajan los datos por internet: modelo OSI, direcciones IP, cableado y primeras redes locales.'],
+  ['Física',90,'mat','Movimiento, energía y electricidad para entender el hardware que hace funcionar la tecnología.'],
+  ['Fundamentos de Programación',60,'sw','Tus primeros programas: variables, condiciones, ciclos y cómo traducir un problema a pasos.'],
+  ['Comunicación y Habilidades Digitales',75,'hum','Escribir, presentar e investigar con herramientas digitales de forma profesional.']]},
+ {k:1,s:[
+  ['Inglés II',75,'ing','Hablar de rutinas, experiencias pasadas y planes; lectura de textos técnicos cortos.'],
+  ['Habilidades Socioemocionales y Manejo de Conflictos',60,'hum','Trabajar en equipo, manejar emociones y resolver desacuerdos sin romper el proyecto.'],
+  ['Cálculo Diferencial',90,'mat','Límites y derivadas para analizar cómo cambian los sistemas y optimizar soluciones.'],
+  ['Conmutación y Enrutamiento de Redes',75,'inf','Configurar switches y routers, crear VLANs y conectar redes entre sí.'],
+  ['Probabilidad y Estadística',75,'mat','Analizar datos, medir incertidumbre y tomar decisiones con evidencia. Base de la ciencia de datos.'],
+  ['Programación Estructurada',75,'sw','Funciones, arreglos y archivos: programas más grandes, ordenados y fáciles de mantener.'],
+  ['Sistemas Operativos',75,'inf','Cómo Windows y Linux administran procesos, memoria y archivos; uso de la terminal.']]},
+ {k:1,s:[
+  ['Inglés III',75,'ing','Conversaciones de trabajo, correos formales y comprensión de documentación técnica.'],
+  ['Desarrollo del Pensamiento y Toma de Decisiones',60,'hum','Pensamiento crítico y creativo para analizar problemas y elegir la mejor solución.'],
+  ['Cálculo Integral',60,'mat','Integrales para calcular acumulaciones, áreas y modelos que usarás en ingeniería.'],
+  ['Tópicos de Calidad para el Diseño de Software',90,'sw','Buenas prácticas, pruebas y requisitos para que el software funcione bien desde el diseño.'],
+  ['Bases de Datos',75,'dat','Diseñar bases de datos relacionales y consultarlas con SQL.'],
+  ['Programación Orientada a Objetos',105,'sw','Clases, objetos, herencia y polimorfismo: la forma en que se construye el software moderno.'],
+  ['Proyecto Integrador I',60,'ges','Tu primer proyecto completo en equipo, combinando lo aprendido en el ciclo.']]},
+ {k:2,s:[
+  ['Inglés IV',75,'ing','Expresar opiniones, comparar opciones y participar en reuniones en inglés.'],
+  ['Ética Profesional',60,'hum','Responsabilidad, honestidad y el impacto social de las decisiones de un profesional de TI.'],
+  ['Cálculo de Varias Variables',75,'mat','Funciones de varias variables y vectores: base para gráficos, simulación e IA.'],
+  ['Aplicaciones Web',75,'sw','Construir sitios y aplicaciones con HTML, CSS, JavaScript y un servidor.'],
+  ['Estructura de Datos',75,'sw','Listas, pilas, colas, árboles y grafos para escribir programas rápidos y eficientes.'],
+  ['Desarrollo de Aplicaciones Móviles',90,'sw','Crear apps para Android e iOS, desde la interfaz hasta su publicación.'],
+  ['Análisis y Diseño de Software',75,'sw','Modelar sistemas con UML y metodologías antes de escribir código.']]},
+ {k:2,s:[
+  ['Inglés V',75,'ing','Presentaciones técnicas y redacción de reportes en inglés.'],
+  ['Liderazgo de Equipos de Alto Desempeño',60,'hum','Coordinar equipos, delegar y motivar para entregar resultados.'],
+  ['Ecuaciones Diferenciales',75,'mat','Modelar sistemas que cambian en el tiempo, como señales, circuitos o poblaciones.'],
+  ['Aplicaciones Web Orientadas a Servicios',90,'sw','Diseñar y consumir APIs REST y servicios web que conectan aplicaciones.'],
+  ['Bases de Datos Avanzadas',75,'dat','Optimización, procedimientos almacenados, seguridad y bases NoSQL.'],
+  ['Estándares y Métricas para el Desarrollo de Software',90,'sw','Medir la calidad del software y trabajar con estándares de la industria como CMMI e ISO.'],
+  ['Proyecto Integrador II',60,'ges','Un sistema multiplataforma completo, listo para presentarse antes de tu estadía.']]},
+ {k:2,est:true,s:[['Estadía TSU en Desarrollo de Software Multiplataforma',600,'est','600 horas trabajando en una empresa u organización en un proyecto real de software. Al terminar obtienes el título de Técnico Superior Universitario.']]},
+ {k:3,s:[
+  ['Inglés VI',75,'ing','Negociar, argumentar y comunicarte con clientes en contextos profesionales.'],
+  ['Habilidades Gerenciales',60,'hum','Planear, organizar y dirigir áreas de trabajo tecnológicas.'],
+  ['Formulación de Proyectos de Tecnología',60,'ges','Detectar una necesidad y convertirla en una propuesta de proyecto tecnológico con objetivos y costos.'],
+  ['Fundamentos de Inteligencia Artificial',90,'dat','Búsqueda, aprendizaje automático y redes neuronales: cómo aprenden las máquinas.'],
+  ['Ética y Legislación en Tecnologías de la Información',60,'hum','Protección de datos personales, propiedad intelectual y delitos informáticos.'],
+  ['Optativa I',90,'opt','Materia de especialización que la universidad define según las necesidades de la región y la industria.'],
+  ['Seguridad Informática',90,'inf','Proteger redes y sistemas: amenazas, criptografía, firewalls y respuesta a incidentes.']]},
+ {k:3,s:[
+  ['Inglés VII',75,'ing','Inglés avanzado para entrevistas, documentación y trabajo con equipos internacionales.'],
+  ['Electrónica Digital',75,'mat','Compuertas lógicas, circuitos y microcontroladores: el puente entre software y hardware.'],
+  ['Gestión de Proyectos de Tecnología',60,'ges','Dirigir proyectos con metodologías ágiles y tradicionales: tiempos, riesgos y recursos.'],
+  ['Programación para Inteligencia Artificial',75,'dat','Programar modelos de IA con Python y librerías de aprendizaje automático.'],
+  ['Administración de Servidores',75,'inf','Instalar y mantener servidores Linux y Windows, servicios en red y nube.'],
+  ['Optativa II',90,'opt','Segunda materia de especialización para profundizar en un área de TI.'],
+  ['Informática Forense',75,'inf','Investigar incidentes digitales: recuperar evidencia y documentarla con validez.']]},
+ {k:3,s:[
+  ['Inglés VIII',75,'ing','Dominio profesional del idioma para certificarte y trabajar en cualquier lugar.'],
+  ['Internet de las Cosas',75,'inf','Conectar sensores y dispositivos a la red para crear soluciones inteligentes.'],
+  ['Evaluación de Proyectos de Tecnología',60,'ges','Analizar si un proyecto es viable: costo-beneficio, retorno de inversión y riesgos.'],
+  ['Ciencia de Datos',90,'dat','Limpiar, analizar y visualizar grandes volúmenes de datos para encontrar patrones.'],
+  ['Tecnologías Disruptivas',75,'dat','Blockchain, realidad aumentada, cómputo en la nube y lo que viene después.'],
+  ['Optativa III',90,'opt','Tercera materia de especialización para cerrar tu perfil profesional.'],
+  ['Proyecto Integrador III',60,'ges','Proyecto de innovación digital que integra IA, datos, seguridad y gestión.']]},
+ {k:3,est:true,s:[['Estadía de Ingeniería en TI e Innovación Digital',600,'est','600 horas en la industria desarrollando un proyecto de ingeniería. Al concluir obtienes el título de Ingeniería.']]}
+];
+// índice global
+const ALL=[]; PLAN.forEach((q,i)=>q.s.forEach((s,j)=>ALL.push({id:i+'-'+j,q:i+1,k:q.k,n:s[0],h:s[1],a:s[2],d:s[3]})));
+const byName = n => ALL.find(x=>x.n===n);
+const fmt = n => n.toLocaleString('es-MX');
+const cred = h => (Math.floor(h/16*100)/100).toFixed(2);
+
+const store={get(k,d){try{const v=localStorage.getItem('itiid:'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('itiid:'+k,JSON.stringify(v))}catch(e){}}};
+let done = new Set(store.get('done',[]));
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const toast=(m)=>{const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,2200)};
+
+/* ---- Navegación ---- */
+const VIEWS=['inicio','mapa','futuro','vive','preparate'];
+function go(v,push){
+  if(!VIEWS.includes(v)) v='inicio';
+  document.querySelectorAll('.view').forEach(e=>e.classList.toggle('active',e.id==='v-'+v));
+  document.querySelectorAll('.nav button').forEach(b=>{if(b.dataset.go===v)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
+  if(push!==false){try{history.replaceState(null,'','#'+v)}catch(e){}}
+  window.scrollTo({top:0});
+  store.set('view',v);
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b){go(b.dataset.go)}});
+window.addEventListener('hashchange',()=>go(location.hash.slice(1),false));
+
+/* ---- Inicio ---- */
+const route=$('#routeTrack');
+PLAN.forEach((q,i)=>{const b=document.createElement('button');b.className='seg k'+q.k+(q.est?' est':'');b.textContent=q.est?(i===5?'TSU':'ING'):(i+1)+'°';b.title=q.est?q.s[0][0]:'Cuatrimestre '+(i+1);b.onclick=()=>{go('mapa');setTimeout(()=>{const c=document.querySelectorAll('.col')[i];c&&c.scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'})},60)};route.appendChild(b)});
+const total=ALL.reduce((a,b)=>a+b.h,0);$('#sHrs').textContent=fmt(total);
+$('#pillars').innerHTML=[
+ ['Inglés en los 10 cuatrimestres','Ocho niveles de inglés, 600 horas en total, para que leas documentación, trabajes con equipos internacionales y te certifiques.'],
+ ['Práctica antes de egresar','Tres proyectos integradores y dos estadías de 600 horas en empresas. Sales con experiencia comprobable en tu CV.'],
+ ['Tecnología de hoy','Inteligencia artificial, ciencia de datos, IoT, ciberseguridad e informática forense forman parte del plan oficial.'],
+ ['Habilidades para dirigir','Liderazgo, ética, habilidades gerenciales y gestión de proyectos para que puedas coordinar equipos, no solo programar.']
+].map(([t,d])=>`<div class="card"><h3>${t}</h3><p class="muted">${d}</p></div>`).join('');
+$('#copyPhone').onclick=()=>{const n='4471508913';try{navigator.clipboard.writeText(n).then(()=>toast('Teléfono copiado'),()=>sel())}catch(e){sel()}
+ function sel(){const r=document.createRange();r.selectNodeContents($('#phone'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('Teléfono seleccionado')}};
+
+/* ---- Mapa ---- */
+let filter=null, query='';
+const chips=$('#areaChips');
+chips.innerHTML=Object.entries(AREAS).map(([k,a])=>`<button class="chip" style="--c:var(${a.c})" data-a="${k}" aria-pressed="false">${a.n}</button>`).join('');
+chips.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;filter=filter===b.dataset.a?null:b.dataset.a;chips.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.a===filter));applyFilter()});
+$('#q').addEventListener('input',e=>{query=e.target.value.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');applyFilter()});
+function renderMap(){
+  $('#cols').innerHTML=PLAN.map((q,i)=>{
+    const hrs=q.s.reduce((a,s)=>a+s[1],0);
+    const name=q.est?'Estadía':(i+1)+'° cuatrimestre';
+    return `<div class="col k${q.k}"><div class="col-head"><b>${name}</b><span>${hrs} h</span></div>`+
+      q.s.map((s,j)=>{const x=ALL.find(z=>z.id===i+'-'+j);return `<button class="subj${q.est?' est':''}${done.has(x.id)?' done':''}" style="--c:var(${AREAS[x.a].c})" data-id="${x.id}"><span class="n">${esc(x.n)}</span><span class="meta"><span>${AREAS[x.a].n}</span><span>${x.h} h</span></span></button>`}).join('')+`</div>`}).join('');
+  applyFilter(); renderProgress();
+}
+function applyFilter(){
+  document.querySelectorAll('#cols .subj').forEach(el=>{const x=ALL.find(z=>z.id===el.dataset.id);const nm=x.n.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    const ok=(!filter||x.a===filter)&&(!query||nm.includes(query)||x.d.toLowerCase().includes(query));el.classList.toggle('dim',!ok)});
+}
+$('#cols').addEventListener('click',e=>{const b=e.target.closest('.subj');if(b)openSubj(b.dataset.id)});
+const cyc=[[0,1,2],[3,4,5],[6,7,8,9]];
+$('#totals').innerHTML=cyc.map((ix,c)=>{const h=ix.reduce((a,i)=>a+PLAN[i].s.reduce((x,s)=>x+s[1],0),0);return `<div class="total" style="background:var(--c${c+1})"><span>${['Primer','Segundo','Tercer'][c]} ciclo de formación</span><b>${fmt(h)} horas</b><span>${cred(h)} créditos</span></div>`}).join('');
+function renderProgress(){const h=ALL.filter(x=>done.has(x.id)).reduce((a,b)=>a+b.h,0);$('#progBar').style.width=(h/total*100)+'%';$('#progTxt').textContent=`${done.size} de ${ALL.length} · ${fmt(h)} / ${fmt(total)} h`}
+
+/* ---- Hoja de detalle ---- */
+const dlg=$('#sheet');
+function openSubj(id){
+  const x=ALL.find(z=>z.id===id); if(!x) return;
+  const a=AREAS[x.a]; const related=ALL.filter(z=>z.a===x.a&&z.id!==x.id&&x.a!=='opt'&&x.a!=='est').slice(0,8);
+  const roles=ROLES.filter(r=>r.subj.includes(x.n));
+  $('#sheetBody').innerHTML=`
+   <div class="row"><span class="tag" style="background:color-mix(in srgb,var(${a.c}) 16%,var(--surface));color:var(${a.c})">${a.n}</span><span class="tag wine">${['Primer','Segundo','Tercer'][x.k-1]} ciclo</span></div>
+   <h2 id="dTitle">${esc(x.n)}</h2>
+   <p>${esc(x.d)}</p>
+   <div class="kv"><div><b>${x.q}°</b><span>cuatrimestre</span></div><div><b class="mono">${x.h}</b><span>horas</span></div><div><b class="mono">${cred(x.h)}</b><span>créditos</span></div></div>
+   ${roles.length?`<div class="stack" style="gap:6px"><b>Te prepara para</b><div class="links">${roles.map(r=>`<button data-role="${r.t}">${r.t}</button>`).join('')}</div></div>`:''}
+   ${related.length?`<div class="stack" style="gap:6px"><b>Otras materias de ${a.n.toLowerCase()}</b><div class="links">${related.map(r=>`<button data-id="${r.id}">${r.q}° · ${esc(r.n)}</button>`).join('')}</div></div>`:''}
+   <label class="check"><input type="checkbox" id="doneChk" ${done.has(x.id)?'checked':''}> <span>Ya la aprobé (para llevar mi avance)</span></label>
+   <button class="btn primary" id="closeSheet">Cerrar</button>`;
+  $('#doneChk').onchange=e=>{e.target.checked?done.add(x.id):done.delete(x.id);store.set('done',[...done]);renderMap()};
+  $('#closeSheet').onclick=()=>dlg.close();
+  if(!dlg.open){try{dlg.showModal()}catch(e){dlg.setAttribute('open','')}}
+}
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close();const b=e.target.closest('[data-id]');if(b&&b.closest('.links'))openSubj(b.dataset.id);const r=e.target.closest('[data-role]');if(r){dlg.close();go('futuro');}});
+
+/* ---- Futuro ---- */
+const ROLES=[
+ {t:'Desarrollador(a) web y móvil',d:'Construye sitios, apps y APIs para negocios y usuarios.',subj:['Aplicaciones Web','Desarrollo de Aplicaciones Móviles','Aplicaciones Web Orientadas a Servicios','Programación Orientada a Objetos','Estructura de Datos']},
+ {t:'Administrador(a) de redes y servidores',d:'Mantiene la infraestructura de una organización conectada y funcionando.',subj:['Fundamentos de Redes','Conmutación y Enrutamiento de Redes','Sistemas Operativos','Administración de Servidores']},
+ {t:'Analista de datos',d:'Convierte datos en decisiones con consultas, estadística y visualizaciones.',subj:['Probabilidad y Estadística','Bases de Datos','Bases de Datos Avanzadas','Ciencia de Datos']},
+ {t:'Especialista en IA',d:'Entrena y pone en producción modelos que clasifican, predicen o recomiendan.',subj:['Fundamentos de Inteligencia Artificial','Programación para Inteligencia Artificial','Ciencia de Datos','Cálculo de Varias Variables']},
+ {t:'Analista de ciberseguridad',d:'Protege sistemas, detecta ataques e investiga incidentes.',subj:['Seguridad Informática','Informática Forense','Ética y Legislación en Tecnologías de la Información','Administración de Servidores']},
+ {t:'Desarrollador(a) IoT',d:'Diseña dispositivos conectados para casas, campo, industria y ciudades.',subj:['Internet de las Cosas','Electrónica Digital','Física','Fundamentos de Redes']},
+ {t:'Líder de proyectos de TI',d:'Coordina equipos, tiempos y presupuestos de proyectos tecnológicos.',subj:['Gestión de Proyectos de Tecnología','Formulación de Proyectos de Tecnología','Evaluación de Proyectos de Tecnología','Liderazgo de Equipos de Alto Desempeño','Habilidades Gerenciales']},
+ {t:'Ingeniero(a) de calidad de software',d:'Asegura que el software cumpla estándares, pase pruebas y sea mantenible.',subj:['Tópicos de Calidad para el Diseño de Software','Estándares y Métricas para el Desarrollo de Software','Análisis y Diseño de Software']},
+ {t:'Emprendedor(a) tecnológico',d:'Crea su propia startup o consultoría de innovación digital.',subj:['Tecnologías Disruptivas','Evaluación de Proyectos de Tecnología','Proyecto Integrador III','Habilidades Gerenciales']}
+];
+$('#roles').innerHTML=ROLES.map(r=>`<div class="card role"><h3>${r.t}</h3><p class="muted">${r.d}</p><div class="links">${r.subj.map(n=>{const x=byName(n);return x?`<button style="--c:var(${AREAS[x.a].c})" data-sid="${x.id}">${esc(n)}</button>`:''}).join('')}</div></div>`).join('');
+$('#roles').addEventListener('click',e=>{const b=e.target.closest('[data-sid]');if(b)openSubj(b.dataset.sid)});
+$('#timeline').innerHTML=[
+ ['Al 3er cuatrimestre','Primer ciclo',['Programar en un lenguaje orientado a objetos','Diseñar y consultar una base de datos con SQL','Configurar una red local con switches y routers','Usar Linux desde la terminal','Presentar tu primer proyecto integrador en equipo']],
+ ['Al 6° cuatrimestre','Título de TSU',['Desarrollar aplicaciones web y móviles completas','Crear y consumir APIs para conectar sistemas','Diseñar software con UML y medir su calidad','Trabajar 600 horas en una empresa real','Titularte como Técnico Superior Universitario en Desarrollo de Software Multiplataforma']],
+ ['Al 10° cuatrimestre','Título de Ingeniería',['Entrenar modelos de inteligencia artificial','Analizar datos y presentar hallazgos','Proteger sistemas e investigar incidentes de seguridad','Conectar dispositivos IoT','Formular, gestionar y evaluar proyectos de tecnología','Comunicarte en inglés a nivel profesional']]
+].map(([w,t,l])=>`<div class="tl"><div class="when"><b>${t}</b>${w}</div><div><ul>${l.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>`).join('');
+$('#tools').innerHTML=['Python','Java','JavaScript','HTML y CSS','SQL','Git y GitHub','Linux','Visual Studio Code','Android Studio','Simuladores de redes','Arduino','Jupyter','APIs REST','Servidores en la nube','Wireshark','Figma'].map(t=>`<span>${t}</span>`).join('');
+
+/* ---- Participa ---- */
+$('#experiences').innerHTML=[
+ ['3° cuatrimestre','Proyecto Integrador I','Primer sistema en equipo que une programación, bases de datos y calidad de software.'],
+ ['5° cuatrimestre','Proyecto Integrador II','Aplicación multiplataforma con servicios web, pensada para un usuario real.'],
+ ['6° cuatrimestre','Estadía TSU · 600 h','Trabajas dentro de una empresa u organización resolviendo un problema de software.'],
+ ['9° cuatrimestre','Proyecto Integrador III','Proyecto de innovación digital con IA, datos o IoT.'],
+ ['10° cuatrimestre','Estadía de Ingeniería · 600 h','Proyecto de ingeniería en la industria con el que cierras la carrera.'],
+ ['7° a 9° cuatrimestre','Tres optativas','Materias de especialización para orientar tu perfil hacia el área que más te guste.']
+].map(([w,t,d])=>`<div class="card"><span class="tag">${w}</span><h3>${t}</h3><p class="muted">${d}</p></div>`).join('');
+$('#activities').innerHTML=[
+ ['Hackatones','Maratones de 24 a 48 horas para crear un prototipo en equipo. Ideal para practicar y conocer gente de la industria.'],
+ ['Concursos de programación','Resuelve problemas de algoritmos contra el reloj. Entrena la lógica que piden en entrevistas técnicas.'],
+ ['Ferias de ciencia y tecnología','Presenta tus proyectos integradores ante el público, empresas y otras universidades.'],
+ ['Certificaciones','Inglés, redes, nube o ciberseguridad. Un certificado de la industria pesa mucho en tu CV.'],
+ ['Comunidades tecnológicas','Grupos de desarrolladores, software libre y meetups en línea donde aprendes de otros.'],
+ ['Emprendimiento','Convierte un proyecto escolar en un producto con apoyo de incubadoras y convocatorias.'],
+ ['Servicio social','Apoya con tecnología a escuelas, ayuntamientos u organizaciones de tu comunidad.'],
+ ['Actividades culturales y deportivas','Equilibra la carga académica y forma parte de la vida universitaria.']
+].map(([t,d])=>`<div class="card"><h3>${t}</h3><p class="muted">${d}</p></div>`).join('');
+
+/* ---- Prepárate: quiz ---- */
+const QZ=[
+ ['Un fin de semana libre prefieres…',[['Hacer una app o página para algo que te gusta','sw'],['Armar o reparar una computadora o la red de tu casa','inf'],['Revisar estadísticas de tu equipo o juego favorito','dat'],['Organizar un evento con tus amigos','ges']]],
+ ['¿Qué video de YouTube verías completo?',[['Cómo se hizo un videojuego','sw'],['Cómo hackearon a una empresa famosa','inf'],['Cómo funciona ChatGPT','dat'],['Cómo nació una startup','ges']]],
+ ['En un trabajo en equipo tú…',[['Haces la parte técnica','sw'],['Revisas que nada falle','inf'],['Buscas los datos y las pruebas','dat'],['Repartes tareas y cuidas las fechas','ges']]],
+ ['¿Qué problema te gustaría resolver en tu región?',[['Una app para vender productos locales','sw'],['Internet confiable para comunidades','inf'],['Predecir plagas o cosechas con datos','dat'],['Digitalizar los negocios del centro','ges']]],
+ ['¿Qué te emociona más?',[['Ver tu código funcionando','sw'],['Que un sistema resista un ataque','inf'],['Encontrar un patrón que nadie vio','dat'],['Que un proyecto salga a tiempo','ges']]],
+ ['¿Con qué te identificas?',[['Creativo(a) y constructor(a)','sw'],['Detallista y protector(a)','inf'],['Curioso(a) y analítico(a)','dat'],['Líder y comunicador(a)','ges']]]
+];
+const QRES={sw:['Desarrollo de software','Disfrutarás mucho Programación Orientada a Objetos, Aplicaciones Web y Desarrollo de Aplicaciones Móviles.'],
+ inf:['Redes y ciberseguridad','Pon atención en Conmutación y Enrutamiento, Administración de Servidores, Seguridad Informática e Informática Forense.'],
+ dat:['Datos e inteligencia artificial','Tus materias estrella serán Probabilidad y Estadística, Bases de Datos, Ciencia de Datos y Programación para IA.'],
+ ges:['Gestión de proyectos e innovación','Brillarás en los Proyectos Integradores, Gestión de Proyectos de Tecnología y Habilidades Gerenciales.']};
+let qi=0,score={};
+function renderQuiz(){
+  const el=$('#quiz');
+  if(qi>=QZ.length){const top=Object.entries(score).sort((a,b)=>b[1]-a[1])[0][0];const [t,d]=QRES[top];store.set('quiz',top);
+    el.innerHTML=`<span class="eyebrow">Tu perfil</span><div class="result-area">${t}</div><p>${d}</p><p class="muted">Todas las áreas forman parte de la carrera, así que vas a probarlas todas. Este resultado solo te dice por dónde empezar a explorar.</p><div class="cta-row"><button class="btn primary" id="seeArea">Ver estas materias en el mapa</button><button class="btn" id="redo">Repetir test</button></div>`;
+    $('#seeArea').onclick=()=>{filter=top;chips.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.a===filter));applyFilter();go('mapa')};
+    $('#redo').onclick=()=>{qi=0;score={};renderQuiz()};return}
+  const [q,opts]=QZ[qi];
+  el.innerHTML=`<div class="qbar">${QZ.map((_,i)=>`<i class="${i<=qi?'on':''}"></i>`).join('')}</div><span class="mono muted" style="font-size:.8rem">Pregunta ${qi+1} de ${QZ.length}</span><h3>${q}</h3><div class="opts">${opts.map(([t,a])=>`<button class="opt" data-a="${a}">${t}</button>`).join('')}</div>`;
+  el.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{score[b.dataset.a]=(score[b.dataset.a]||0)+1;qi++;renderQuiz()});
+}
+renderQuiz();
+
+/* ---- Prepárate: checklist ---- */
+const CL=['Repasar álgebra y funciones (Fundamentos Matemáticos tiene 105 horas)','Practicar inglés 15 minutos diarios con una app o series con subtítulos','Escribir tu primer programa en un sitio de ejercicios para principiantes','Crear una cuenta de GitHub con tu nombre real','Aprender a escribir sin ver el teclado','Conseguir o apartar una laptop con al menos 8 GB de RAM','Tener un correo profesional (nombre.apellido)','Instalar Visual Studio Code y Python','Ubicar transporte y horarios para llegar a la UTOM','Revisar fechas y requisitos de inscripción con la universidad'];
+let ck=new Set(store.get('check',[]));
+function renderCL(){$('#checklist').innerHTML=`<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><b>${ck.size} de ${CL.length} listos</b><span class="mono muted">${Math.round(ck.size/CL.length*100)}%</span></div><div class="bar"><i style="width:${ck.size/CL.length*100}%"></i></div>`+CL.map((t,i)=>`<label class="check"><input type="checkbox" id="ck${i}" data-i="${i}" ${ck.has(i)?'checked':''}><span>${t}</span></label>`).join('')}
+$('#checklist').addEventListener('change',e=>{const i=+e.target.dataset.i;e.target.checked?ck.add(i):ck.delete(i);store.set('check',[...ck]);renderCL()});
+renderCL();
+$('#tips').innerHTML=[
+ ['Programa un poco cada día','Treinta minutos diarios rinden más que cinco horas la noche antes de entregar.'],
+ ['No le temas a las matemáticas','Hay siete materias de ciencias básicas en el primer y segundo ciclo. Pide asesoría desde la primera duda.'],
+ ['Guarda todos tus proyectos','Súbelos a GitHub. Al llegar a la estadía tendrás un portafolio que mostrar.'],
+ ['Pregunta en inglés','Casi toda la documentación técnica está en inglés. Usarla desde el primer cuatrimestre acelera tu aprendizaje.'],
+ ['Elige bien tu equipo','En los proyectos integradores trabajarás meses con las mismas personas. Busca compromiso, no solo amistad.'],
+ ['Cuida tu descanso','Dormir bien mejora tu capacidad de resolver problemas más que una noche más de código.']
+].map(([t,d])=>`<div class="card"><h3>${t}</h3><p class="muted">${d}</p></div>`).join('');
+
+/* ---- PWA: conexión, instalación, service worker ---- */
+function net(){const on=navigator.onLine;document.body.classList.toggle('offline',!on);$('#netTxt').textContent=on?'En línea':'Sin conexión'}
+addEventListener('online',net);addEventListener('offline',net);net();
+let deferred=null;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;$('#installBtn').hidden=false});
+$('#installBtn').onclick=async()=>{if(!deferred)return;deferred.prompt();try{await deferred.userChoice}catch(e){}deferred=null;$('#installBtn').hidden=true};
+addEventListener('appinstalled',()=>{$('#installBtn').hidden=true;toast('App instalada')});
+if('serviceWorker' in navigator && location.protocol!=='file:'){try{navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}}
+
+renderMap();
+const start=(location.hash||'').slice(1);
+go(VIEWS.includes(start)?start:'inicio',false);
+})();
+</script>
+
+</body>
+</html>
